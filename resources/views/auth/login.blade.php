@@ -6,7 +6,7 @@
         @csrf
         <!-- Email Address -->
         <div>
-            <x-text-input id="login" class="block phone mt-1 w-9/12 mx-auto border-2 border-sky-400" type="text" placeholder="+7 701 775 7272" name="login" :value="old('login')" required autofocus autocomplete="login" />
+            <x-text-input id="login" class="block phone mt-1 w-9/12 mx-auto border-2 border-sky-400" type="text" placeholder="+7 701 775 7272" name="login" value="" required autofocus autocomplete="login" />
             <x-input-error :messages="$errors->get('login')" class="mt-2" />
         </div>
 
@@ -17,7 +17,8 @@
                             type="password"
                             name="password"
                             placeholder="Пароль"
-                            required autocomplete="current-password" />
+                            value=""
+                            required/>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -37,9 +38,11 @@
             </x-primary-button>
         </div>
             <div class="flex items-center justify-end mt-4">
-                <x-secondary-button class="w-9/12 mx-auto">
-                    <a href="{{ route('register') }}">{{ __('Зарегистрироваться') }}</a>
-                </x-secondary-button>
+                <a href="{{ route('register') }}" class="w-full mx-auto">
+                    <x-secondary-button class="w-9/12 mx-auto">
+                        {{ __('Зарегистрироваться') }}
+                    </x-secondary-button>
+                </a>
             </div>
         @if(isset($config->whats_app))
             <div class="flex items-center justify-end mt-4">

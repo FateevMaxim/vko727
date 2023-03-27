@@ -40,6 +40,7 @@ class LoginRequest extends FormRequest
      */
     public function authenticate(): void
     {
+        
         $this->ensureIsNotRateLimited();
 
         $user = User::where('login', $this->login)
@@ -48,10 +49,8 @@ class LoginRequest extends FormRequest
 
         if($user) {
             Auth::login($user, $this->boolean('remember'));
-            RateLimiter::clear($this->throttleKey());
         } else {
             RateLimiter::hit($this->throttleKey());
-
             throw ValidationException::withMessages([
                 'login' => trans('auth.failed'),
             ]);
