@@ -1,6 +1,6 @@
-@if(isset($config->address))
-    @section( 'chinaaddress', $config->address )
-@endif
+@if(isset($config->address)) @section( 'chinaaddress', $config->address ) @endif
+@if(isset($config->title_text)) @section( 'title_text', $config->title_text ) @endif
+@if(isset($config->address_two)) @section( 'address_two', $config->address_two ) @endif
 <x-app-layout>
         <div class="py-6">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -119,6 +119,9 @@
                                     @if(Route::currentRouteName() != 'archive')
                                     <div class="flex flex-row-reverse col-span-1">
                                         <li class="mr-4">
+                                            @include('components.delete-track')
+                                        </li>
+                                        <li class="mr-4">
                                             <form method="POST" action="{{ route('client-product-archive') }}">
                                                 @csrf
                                                 <x-text-input type="hidden" name="archive_track" value="{{$track->track_code}}" />
@@ -132,6 +135,9 @@
                                     </div>
                                         @elseif(Route::currentRouteName() === 'archive')
                                         <div class="flex flex-row-reverse col-span-1">
+                                            <li class="mr-4">
+                                                @include('components.delete-track')
+                                            </li>
                                             <li class="mr-4">
                                                 <form method="POST" action="{{ route('client-product-unarchive') }}">
                                                     @csrf
