@@ -48,7 +48,7 @@
                             <p class="mb-6 text-sm text-dark font-bold">Адрес склада в Китае</p>
                             <p class="mb-6 text-sm text-dark" id="china">@yield( 'chinaaddress' ) <br />
                                 <b>({{ \Illuminate\Support\Facades\Auth::user()->login }}){{ \Illuminate\Support\Facades\Auth::user()->name }} </b><br />
-                                收货人: <b>@yield( 'title_text' )({{ Auth::user()->city }})</b> <br />
+                                收货人: 石先生 <br />
                                 电话: <b>@yield( 'address_two' )</b>
                             </p>
                             <p class="mb-6 text-sm text-dark" style="display: none;" id="chinaaddress">@yield( 'address_two' )@yield( 'chinaaddress' )</p>
